@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (2/2) · t3b06-sa-coin-guide-1</title>
+  <meta name="description" content="t3b06-sa-coin-guide-1에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://sangam-song-info.namanavi.com/posts-2.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ /* RESET */
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ html { scroll-behavior: smooth; }
+ body {
+ font-family: 'Courier New', Courier, monospace, 'Impact', 'Arial Black', sans-serif;
+ background-color: #111111;
+ color: #ffff00;
+ line-height: 1.3;
+ font-size: 1.1rem;
+ overflow-x: hidden;
+ }
+
+ /* TYPOGRAPHY */
+ h1, h2, h3, h4 {
+ font-family: 'Impact', 'Arial Black', 'Courier New', monospace;
+ text-transform: uppercase;
+ letter-spacing: -1px;
+ font-weight: 900;
+ }
+ h1 { font-size: clamp(3.5rem, 15vw, 6rem); line-height: 0.9; color: #ffff00; text-shadow: 6px 6px 0 #00ff41; }
+ h2 { font-size: 2.8rem; margin-bottom: 8px; color: #00ff41; border-bottom: 4px solid #ffff00; display: inline-block; padding-bottom: 4px; }
+ h3 { font-size: 1.8rem; color: #ffff00; }
+ p { margin-bottom: 16px; max-width: 70ch; }
+ a { color: #00ff41; text-decoration: underline wavy 2px #ffff00; }
+ a:hover { background: #ffff00; color: #111111; text-decoration: none; }
+
+ /* LAYOUT - FULL BLEED / ASYMMETRIC */
+ .container { padding: 24px; max-width: 100%; margin: 0; }
+ .container > * { margin-bottom: 40px; }
+
+ header {
+ background: #111111;
+ border-bottom: 4px solid #ffff00;
+ padding: 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-wrap: wrap;
+ gap: 16px;
+ }
+ header .logo {
+ font-size: 2.5rem;
+ font-family: 'Impact', sans-serif;
+ color: #ffff00;
+ background: #00ff41;
+ padding: 4px 12px;
+ transform: rotate(-2deg);
+ display: inline-block;
+ border: 3px solid #ffff00;
+ }
+ nav ul {
+ display: flex;
+ gap: 20px;
+ list-style: none;
+ flex-wrap: wrap;
+ }
+ nav a {
+ font-size: 1.4rem;
+ font-weight: bold;
+ text-transform: uppercase;
+ padding: 8px 12px;
+ border: 3px solid #ffff00;
+ background: #111111;
+ color: #ffff00;
+ text-decoration: none;
+ transition: 0.1s;
+ }
+ nav a:hover {
+ background: #ffff00;
+ color: #111111;
+ transform: scale(1.05) rotate(1deg);
+ }
+
+ /* HAMBURGER */
+ .hamburger {
+ display: none;
+ flex-direction: column;
+ cursor: pointer;
+ gap: 5px;
+ padding: 8px;
+ border: 3px solid #00ff41;
+ background: #111111;
+ }
+ .hamburger span {
+ width: 30px;
+ height: 4px;
+ background: #00ff41;
+ display: block;
+ border-radius: 0;
+ }
+
+ /* HERO */
+ .hero {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 16px;
+ padding: 24px;
+ background: #111111;
+ border: 4px solid #00ff41;
+ margin: 0 -12px;
+ transform: skewY(-1deg);
+ }
+ .hero > * { transform: skewY(1deg); }
+ .hero-left {
+ background: #ffff00;
+ color: #111111;
+ padding: 32px 24px;
+ border: 4px solid #00ff41;
+ box-shadow: 12px 12px 0 #00ff41;
+ position: relative;
+ z-index: 2;
+ margin-right: -20px;
+ }
+ .hero-left h1 { font-size: clamp(3rem, 12vw, 5.5rem); line-height: 0.9; text-shadow: 5px 5px 0 #111111; color: #111111; }
+ .hero-left p { font-size: 1.4rem; font-weight: bold; border-left: 6px solid #111111; padding-left: 12px; }
+ .hero-right {
+ background: #00ff41;
+ color: #111111;
+ padding: 32px 24px;
+ border: 4px solid #ffff00;
+ font-size: 2.5rem;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ font-weight: 900;
+ transform: rotate(2deg);
+ margin-left: -20px;
+ margin-top: 20px;
+ box-shadow: -8px 8px 0 #ffff00;
+ position: relative;
+ z-index: 1;
+ }
+ .hero-right span { display: block; font-size: 4rem; line-height: 1; }
+
+ /* SECTION COMMON */
+ section { padding: 24px 0; border-top: 4px solid #ffff00; margin-top: 40px; position: relative; }
+ section::before {
+ content: "⚡";
+ position: absolute;
+ top: -24px;
+ left: 24px;
+ font-size: 2rem;
+ background: #111111;
+ padding: 4px 12px;
+ border: 3px solid #00ff41;
+ transform: rotate(-5deg);
+ }
+
+ .section-title {
+ font-size: 3rem;
+ background: #111111;
+ display: inline-block;
+ padding: 0 16px 4px 16px;
+ margin-left: 0;
+ border: 3px solid #ffff00;
+ transform: skewX(-8deg);
+ margin-bottom: 24px;
+ }
+ .section-title span { display: inline-block; transform: skewX(8deg); }
+
+ /* REVIEW CARDS */
+ .review-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+ gap: 24px;
+ padding: 8px;
+ }
+ .review-card {
+ background: #111111;
+ border: 4px solid #00ff41;
+ padding: 24px;
+ transform: rotate(var(--rot, -1deg));
+ box-shadow: 6px 6px 0 #ffff00;
+ transition: 0.15s;
+ }
+ .review-card:hover { transform: rotate(1deg) scale(1.02); box-shadow: 10px 10px 0 #ffff00; }
+ .review-card:nth-child(odd) { --rot: 1deg; }
+ .review-card .stars { color: #ffff00; font-size: 1.8rem; letter-spacing: 4px; }
+ .review-card .meta { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem; color: #00ff41; border-bottom: 2px dashed #ffff00; padding-bottom: 8px; }
+ .review-card p { font-size: 1.1rem; margin: 0; color: #ffff00; }
+
+ /* INFO SECTION */
+ .info-grid {
+ display: grid;
+ grid-template-columns: 2fr 1fr;
+ gap: 24px;
+ }
+ .info-block {
+ background: #111111;
+ border: 4px solid #ffff00;
+ padding: 24px;
+ transform: skewX(-1deg);
+ }
+ .info-block ul { list-style: none; padding: 0; }
+ .info-block li { padding: 8px 0; border-bottom: 2px solid #00ff41; display: flex; gap: 12px; align-items: center; }
+ .info-block li::before { content: "🔊"; font-size: 1.4rem; }
+
+ .cta-block {
+ background: #ffff00;
+ color: #111111;
+ padding: 32px;
+ border: 4px solid #00ff41;
+ text-align: center;
+ font-size: 2rem;
+ font-weight: 900;
+ transform: rotate(-2deg);
+ box-shadow: 8px 8px 0 #00ff41;
+ }
+ .cta-block a { color: #111111; background: #00ff41; padding: 12px 24px; text-decoration: none; border: 3px solid #111111; display: inline-block; margin-top: 12px; }
+ .cta-block a:hover { background: #111111; color: #00ff41; }
+
+ /* FOOTER */
+ footer {
+ border-top: 4px solid #00ff41;
+ margin-top: 40px;
+ padding: 32px 24px;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ gap: 16px;
+ background: #111111;
+ color: #ffff00;
+ font-size: 0.9rem;
+ }
+ footer a { color: #00ff41; }
+
+ /* RESPONSIVE */
+ @media (max-width: 768px) {
+ .container { padding: 16px; }
+ header { flex-direction: column; align-items: flex-start; gap: 12px; }
+ nav ul { display: none; flex-direction: column; width: 100%; gap: 8px; }
+ nav ul.active { display: flex; }
+ .hamburger { display: flex; }
+ .hero { grid-template-columns: 1fr; transform: none; }
+ .hero > * { transform: none; }
+ .hero-left { margin: 0; box-shadow: 6px 6px 0 #00ff41; }
+ .hero-right { margin: 0; margin-top: 16px; transform: none; box-shadow: -6px 6px 0 #ffff00; }
+ .info-grid { grid-template-columns: 1fr; }
+ .review-grid { grid-template-columns: 1fr; }
+ h2 { font-size: 2rem; }
+ .section-title { font-size: 2rem; }
+ .cta-block { font-size: 1.5rem; padding: 20px; }
+ footer { flex-direction: column; align-items: center; text-align: center; }
+ }
+
+ /* MISC RAW */
+ ::selection { background: #ffff00; color: #111111; }
+ .skew-raw { display: inline-block; transform: skewX(-10deg); background: #00ff41; color: #111111; padding: 2px 8px; }
+ .border-raw { border: 4px solid #ffff00; padding: 8px; }
+ .negative-margin-left { margin-left: -24px; }
+ .negative-margin-right { margin-right: -24px; }
+ .texture-bg { background-image: repeating-linear-gradient(45deg, #111111 0px, #111111 4px, #1a1a1a 4px, #1a1a1a 8px); }
+ </style>
+  <meta property="og:title" content="글 목록 (2/2) · t3b06-sa-coin-guide-1">
+  <meta property="og:description" content="t3b06-sa-coin-guide-1에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://sangam-song-info.namanavi.com/posts-2.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+ <div class="logo">
+ 🔊 상암코노
+ </div>
+ <div class="hamburger" onclick="toggleMenu()">
+ 
+ </div>
+ <nav>
+ <ul id="navMenu">
+ <li><a href="#review">후기</a></li>
+ <li><a href="#guide">꿀팁</a></li>
+ <li><a href="#contact">연락</a></li>
+ </ul>
+ </nav>
+</header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 34개 · 2/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0309.html">상암 코인노래방 가이드 따라 살펴보는 합정 노래방 추천정보와 선택 기준</a>
+        <p class="post-item__summary">상암 코인노래방 가이드를 찾는 이들은 단순히 시설 정보뿐만 아니라 신뢰할 수 있는 후기 판별법에도 관심이 많습니다. 합정 지역은 유동 인구가 많아 다양한 업소가 존재하며, 이용객은 객관적인 데이터를</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0310.html">상암 코인노래방 가이드 기반의 연남 클럽 추천정보 선택과 가격 판단</a>
+        <p class="post-item__summary">상암 코인노래방 가이드를 확인하던 방문객들이 최근 연남 지역의 역동적인 분위기에 관심을 가지는 경우가 늘고 있습니다. 클럽을 선택할 때는 분위기가 자유로운 곳과 음악 장르에 특화된 곳이라는 두 가지</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0311.html">상암 코인노래방 가이드로 확인하는 합정 셔츠룸 추천정보 및 예약 실패 사례</a>
+        <p class="post-item__summary">상암 코인노래방 가이드를 보며 노래방 문화를 즐기던 이들이 합정 지역의 특수 업소인 셔츠룸으로 눈을 돌릴 때 가장 많이 겪는 실수는 사전 예약 절차의 미숙함입니다. 정식 절차를 거치지 않고 현장을 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0312.html">상암 코인노래방 가이드 활용법 및 공덕 가라오케 추천정보 체크리스트</a>
+        <p class="post-item__summary">상암 코인노래방 가이드를 애용하는 사용자들이 이제는 좀 더 격식 있는 가라오케를 찾을 때 확인해야 할 항목들이 있습니다. 특히 공덕 지역은 대중교통 접근성이 뛰어난 곳이 많아 방문 전 위치 파악이 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0313.html">상암 코인노래방 가이드로 상수 마사지 추천정보 알기</a>
+        <p class="post-item__summary">친구들과 상암 코인노래방에서 즐거운 시간을 보내고 난 뒤, 어깨와 등 근육이 뭉친 것을 느끼며 급히 피로를 풀 곳을 찾는 상황이 발생하곤 합니다. 이럴 때 당황해서 근처 아무 샵이나 방문하기보다는,</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0314.html">상암 코인노래방 가이드 따라 망원 노래방 추천정보 확인하기</a>
+        <p class="post-item__summary">흔히 상암 코인노래방 가이드를 찾아보는 이들이 망원동 일대의 시설은 코인 형태가 없거나 수준이 낮을 것이라는 오해를 하곤 합니다. 하지만 이러한 편견과는 달리 망원 지역은 음악을 즐기는 사람들에게 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0315.html">상암 코인노래방 가이드와 비교하는 홍대 노래방 추천정보</a>
+        <p class="post-item__summary">노래방을 선정할 때 중요한 조건은 음향 시설, 청결도, 그리고 공간의 크기입니다. 상암 코인노래방 가이드에서 제시하는 기본 지침을 기반으로, 방문객의 인원 구성에 따라 최적의 장소를 선택하는 안목이</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0316.html">상암 코인노래방 가이드에서 살펴보는 공덕 셔츠룸 추천정보</a>
+        <p class="post-item__summary">여러분은 평소 여가 시간을 보낼 때 어떤 기준을 가지고 업체를 선정하시나요? 상암 코인노래방 가이드와 같은 정보들을 보며 익숙한 놀이 문화를 즐기는 것도 좋지만, 때로는 보다 특별한 환경에서 휴식을</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0317.html">상암 코인노래방 가이드 활용해 연남 유흥 추천정보 확인하는 방법</a>
+        <p class="post-item__summary">상암 코인노래방 가이드 내용을 참고하다 보면 자연스럽게 주변 상권인 연남동의 문화 콘텐츠로 시야가 넓어지게 됩니다. 단순한 노래 연습장을 넘어 지역 내 다양한 여가 시설을 탐색하는 것은 즐거운 경험</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0318.html">상암 코인노래방 가이드와 마곡 가라오케 추천정보의 가격 비교</a>
+        <p class="post-item__summary">상암 코인노래방 가이드 내용을 통해 가벼운 음악 활동을 즐기는 분들이 있는가 하면, 더 격식 있는 자리를 찾는 분들도 계십니다. 가벼운 코인 노래 시설과 프리미엄 가라오케는 그 목적과 지향점이 완전</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0319.html">상암 코인노래방 가이드 참고 시 주의할 마곡 유흥 추천정보 예약법</a>
+        <p class="post-item__summary">상암 코인노래방 가이드 정보만 믿고 마곡 지역의 유흥 업소를 무작정 방문하다가 낭패를 보는 경우가 있습니다. 많은 이용자가 예약을 하지 않고 현장을 찾았다가 자리가 없거나 운영 시간이 종료되어 발길</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/interview-001-1n66996.html">상암 코인노래방 가이드</a>
+        <p class="post-item__summary">상암동 지역에서 짧은 시간 동안 노래를 즐기고 싶어 하는 분들을 위해 상암 코인노래방 가이드를 준비했습니다. 상암동은 디지털 미디어 단지가 조성되어 있어 평일 저녁이나 주말에 직장인과 거주민들이 여</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/interview-001-wqm690.html">상암 코인노래방 가이드 경험자에게 물어본 현실적인 판단 기준</a>
+        <p class="post-item__summary">코인노래방을 자주 이용하는 사람들이 매장을 고를 때 공통적으로 살펴보는 기준이 있다. 화려한 인테리어보다 음향 상태와 곡 업데이트 주기, 룸 크기 같은 실용적인 부분을 우선시하는 경우가 많다. 상암</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/t3link-002-1n66996.html">상암 코인노래방 가이드 관련 추천 정보</a>
+        <p class="post-item__summary">백링크 지시: 본문 내러티브 속에서 다음 링크를 자연스러운 발견으로 녹여라: 리얼 후기 페이지</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <a class="pager__link" href="posts.html">1</a>
+      <span class="pager__current">2</span>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
